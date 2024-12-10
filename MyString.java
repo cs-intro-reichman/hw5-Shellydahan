@@ -76,6 +76,9 @@ public class MyString {
     public static String spacedString(String str) {
         //// Replace the following statement with your code
         String ans = "";
+        if (str.length() == 0) {
+            return "";
+        }
         for (int i = 0; i < str.length() - 1; i++){
             ans += str.charAt(i) + " ";
         }
@@ -118,6 +121,7 @@ public class MyString {
        char [] str1Arr = new char[str1.length()];
        for (int j = 0; j < str1.length(); j++)
            str1Arr[j] = str1.charAt(j);
+
         for (int i = 0; i < str2.length(); i++) {
             boolean isFound = false;
             for (int j = 0; j < str1Arr.length; j++) {
@@ -129,6 +133,11 @@ public class MyString {
             }
             if(!isFound)
               ans += str2.charAt(i);
+        }
+        for (int j = 0; j < str1Arr.length; j++) {
+            if (str1Arr[j] != '#') { 
+                ans += str1Arr[j];
+            }
         }
         return ans;
     }
