@@ -51,7 +51,7 @@ public class Scrabble {
 		//// Replace the following statement with your code
 		boolean isFound=false;
 		for (int i = 0; i < DICTIONARY.length; i++){
-			if(DICTIONARY[i].equals(word))
+			if(DICTIONARY[i].equals(word) && DICTIONARY[i] != null)
 			isFound = true;
 		}
 		return isFound;
