@@ -4,10 +4,11 @@
 public class MyString {
     public static void main(String args[]) {
         String hello = "hello";
-        System.out.println(countChar(hello, 'h'));
-        System.out.println(countChar(hello, 'l'));
-        System.out.println(countChar(hello, 'z'));
-        System.out.println(spacedString(hello));
+       // System.out.println(subsetOf("sap","space"));
+       // System.out.println(subsetOf("pass","space"));
+       // System.out.println(subsetOf("c","space"));
+        //System.out.println(spacedString(hello));
+        System.out.println( insertRandomly('s',"cat"));
         //// Put your other tests here.
     }
 
@@ -21,7 +22,12 @@ public class MyString {
      */
     public static int countChar(String str, char ch) {
         //// Replace the following statement with your code
-        return 0;
+        int count=0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ch)
+              count++;
+        }
+        return count;
     }
 
     /** Returns true if str1 is a subset string str2, false otherwise
@@ -37,7 +43,26 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
          //// Replace the following statement with your code
+        boolean isFound = true;
+        if(str1.length() > str2.length())
         return false;
+        char [] str2Arr = new char[str2.length()];
+        for (int j = 0; j < str2.length(); j++)
+           str2Arr[j] = str2.charAt(j);
+
+        for (int i = 0; i < str1.length(); i++) {
+            isFound = false;
+            for (int j = 0; j < str2Arr.length; j++) {
+              if (str2Arr[j] == str1.charAt(i)) {
+                str2Arr[j] = '#';
+                isFound = true;
+                break;
+              }
+            }
+            if(!isFound)    
+                return false;    
+        }
+        return true;
     }
 
     /** Returns a string which is the same as the given string, with a space
@@ -50,7 +75,15 @@ public class MyString {
      */
     public static String spacedString(String str) {
         //// Replace the following statement with your code
-        return null;
+        String ans = "";
+        if (str.length() == 0) {
+            return "";
+        }
+        for (int i = 0; i < str.length() - 1; i++){
+            ans += str.charAt(i) + " ";
+        }
+        ans += str.charAt(str.length() - 1);
+        return ans;
     }
   
     /**
@@ -65,7 +98,12 @@ public class MyString {
      */
     public static String randomStringOfLetters(int n) {
         //// Replace the following statement with your code
-        return null;
+        String randomString = "";
+        for (int i = 0; i < n; i++){
+            char r = (char) ((Math.random() * 26) + 97);
+            randomString += r;
+        }
+        return randomString;
     }
 
     /**
@@ -79,7 +117,29 @@ public class MyString {
      */
     public static String remove(String str1, String str2) {
        //// Replace the following statement with your code
-        return null;
+       String ans = "";
+       char [] str1Arr = new char[str1.length()];
+       for (int j = 0; j < str1.length(); j++)
+           str1Arr[j] = str1.charAt(j);
+
+        for (int i = 0; i < str2.length(); i++) {
+            boolean isFound = false;
+            for (int j = 0; j < str1Arr.length; j++) {
+                if (str1Arr[j] == str2.charAt(i)) {
+                    str1Arr[j] = '#';
+                    isFound = true;
+                    break;
+                }
+            }
+            if(!isFound)
+              ans += str2.charAt(i);
+        }
+        for (int j = 0; j < str1Arr.length; j++) {
+            if (str1Arr[j] != '#') { 
+                ans += str1Arr[j];
+            }
+        }
+        return ans;
     }
 
     /**
