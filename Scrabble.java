@@ -48,11 +48,17 @@ public class Scrabble {
 
 	// Checks if the given word is in the dictionary.
 	public static boolean isWordInDictionary(String word) {
-		//// Replace the following statement with your code
-		boolean isFound=false;
-		for (int i = 0; i < DICTIONARY.length; i++){
-			if(DICTIONARY[i].equals(word) && DICTIONARY[i] != null)
-			isFound = true;
+		boolean isFound = false;
+		for (int i = 0; i < DICTIONARY.length; i++) {
+			// If we hit a null entry, no need to continue checking
+			if (DICTIONARY[i] == null) {
+				break;
+			}
+			// Compare only if the current entry is non-null
+			if (DICTIONARY[i].equals(word)) {
+				isFound = true;
+				break;
+			}
 		}
 		return isFound;
 	}
